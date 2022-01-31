@@ -1,6 +1,4 @@
-<center> Projet dev: Piloco </center>
- 
- <p align="center">Projet dev: Piloco </p>
+<p align="center">Projet dev: Piloco </p>
 
 ## Fonctionnement
 
