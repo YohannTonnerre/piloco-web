@@ -1,8 +1,4 @@
-# Projet dev: Piloco 
-
-## Techno
-
-API, VueJS,Laravel
+<h1 align="center"> Projet dev: Piloco </h1>
 
 ## Fonctionnement
 
