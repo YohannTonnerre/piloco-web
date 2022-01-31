@@ -1,4 +1,4 @@
-<h1 align="center> Projet dev: Piloco </h1>
+<h1 align="center"> Projet dev: Piloco </h1>
 
 ## Fonctionnement
 
