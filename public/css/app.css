@@ -10022,9 +10022,13 @@ h3 {
 .admin-container {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.admin-container .table {
+  width: 70%;
 }
 .admin-container .admin-form {
-  display: block;
-  margin: auto;
   width: 30%;
 }
