@@ -10,22 +10,6 @@
     </head>
     <body>
         <div id="app">
-            <router-link to="/">
-                <p>Home</p>
-            </router-link>
-            <router-link to="/register">
-                <p>register</p>
-            </router-link>
-            <router-link to="/login">
-                <p>login</p>
-            </router-link>
-                
-
-            
-            <div class="rooter-view-container">
-                <router-view></router-view>
-            </div>
-
         </div>
 
 

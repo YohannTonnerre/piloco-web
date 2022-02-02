@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\TokenController;
+use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\Admin\ModeController;
+use App\Http\Controllers\Admin\PicoloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +32,25 @@ Route::middleware('auth:sanctum')->get('/authentificated', function () {
 Route::post('register', [RegisterController::class, 'index']);
 Route::post('login', [LoginController::class, 'index']);
 Route::post('logout', [LoginController::class, 'logout']);
+
+
+Route::get('token/{id}', [TokenController::class, 'index']);
+Route::get('user/{id}', [UserController::class, 'index']);
+
+Route::group(['prefix' => 'mode'], function () {
+    Route::get('all', [ModeController::class, 'index']);
+    Route::post('add', [ModeController::class, 'store']);
+    Route::get('edit/{id}', [ModeController::class, 'edit']);
+    Route::get('show/{id}', [ModeController::class, 'show']);
+    Route::put('update/{id}', [ModeController::class, 'update']);
+    Route::delete('delete/{id}', [ModeController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'picolo'], function () {
+    Route::get('all', [PicoloController::class, 'index']);
+    Route::post('add', [PicoloController::class, 'store']);
+    Route::get('edit/{id}', [PicoloController::class, 'edit']);
+    Route::get('show/{id}', [PicoloController::class, 'show']);
+    Route::put('update/{id}', [PicoloController::class, 'update']);
+    Route::delete('delete/{id}', [PicoloController::class, 'destroy']);
+});
