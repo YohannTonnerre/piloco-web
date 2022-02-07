@@ -25,6 +25,9 @@ Le principe du jeu est de faire ou répondre à une question ou une action propo
 // Difficulté: 1
 - Parfois advient un malus aléatoire
 
+// Difficulté: 1
+- Faire player, et admin
+
 ## Contenu CRUD BDD
 
 // Difficulté: 3
@@ -43,8 +46,11 @@ Le super Admin peut:
 - CRUD des modes de jeu
 - CRUD des questions
 
-// Difficulté: 3
-- Faire player, et admin
+// Difficulté: 5
+- Permettre aux joueurs de créer leurs questions
+La question est envoyé aux modérateurs, si la question est validé elle sera ajouté à la base de donnée sinon elle sera refusé.
+Un mail sera envoyé à l'utilisateur pour lui informé de l'état d'avancement de sa question.
+
 
 ## Contenu Table
 
@@ -83,10 +89,7 @@ Plusieurs modes avec un dégré de question différent:
 
 ## Difficulté technique
 
-// Difficulté: 5
-- Permettre aux joueurs de créer leurs questions
-La question est envoyé aux modérateurs, si la question est validé elle sera ajouté à la base de donnée sinon elle sera refusé.
-Un mail sera envoyé à l'utilisateur pour lui informé de l'état d'avancement de sa question.
+
 
 // Difficulté: 6
 - Le jeu sera jouable depuis plusieurs postes connectés entre eux. (web socket, serveur)
