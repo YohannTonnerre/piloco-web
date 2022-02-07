@@ -66,7 +66,7 @@ cp .env.example .env (and fill it with correct informations)
 
 php artisan key:generate
 
-php artisan migrate
+php artisan migrate:fresh --seed
 
 yarn install
 
