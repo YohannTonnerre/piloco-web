@@ -29,6 +29,7 @@
 			</div>
 
 			<input type="submit" value="Submit" class="btn btn-primary" />
+			<router-link :to="{ name: 'Register' }">S'inscrire</router-link>
 		</form>
 	</section>
 </template>
@@ -46,10 +47,7 @@ export default {
 	},
 	methods: {
 		loginUser: async function () {
-
-
 			await axios.get('/sanctum/csrf-cookie').then(response => {
-
 				axios.post('/api/login', this.form)
 					.then((response) => {
 						localStorage.token = response.data[2]
@@ -58,10 +56,6 @@ export default {
 						this.errors = error.response.data.errors
 					})
 			})
-
-
-
-
 		}
 	}
 }
