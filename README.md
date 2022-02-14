@@ -64,13 +64,13 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## How to start coding? 
 cp .env.example .env (and fill it with correct informations)
 
+composer install
+
 php artisan key:generate
 
 php artisan migrate:fresh --seed
 
 yarn install
-
-composer install
 
 ## Lauch server
 php artisan serve
