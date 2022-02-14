@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\TokenController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Admin\ModeController;
 use App\Http\Controllers\Admin\PicoloController;
+use App\Events\Test;
 
 
 /*
@@ -59,3 +60,6 @@ Route::group(['prefix' => 'picolo'], function () {
 
 
 
+Route::get('play-game-picolo', function(){
+    broadcast(new Test());
+});

@@ -116,9 +116,10 @@ const routes = [
 
             },
             {
-                path: 'play-game-picolo/:id',
+                path: 'play-game-picolo/',
                 component: PlayGamePicolo,
                 name: 'PlayGamePicolo',
+                props: true
 
             },
         ]
