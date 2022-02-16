@@ -22,12 +22,12 @@ class Test implements ShouldBroadcast
      */
     public function __construct()
     {
-        //
     }
 
     public function broadcastWith(){
+      
         return [
-            Auth::user()->name
+            Auth::user()->id
         ];
     }
 
@@ -38,6 +38,7 @@ class Test implements ShouldBroadcast
      */
     public function broadcastOn()
     {
+        // dd($request);
         return new Channel('channel');
     }
 }

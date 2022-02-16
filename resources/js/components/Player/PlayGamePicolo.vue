@@ -33,7 +33,7 @@ export default {
 
 
 		broadcast: function () {
-			axios.get(`/api/play-game-picolo`)
+			axios.post(`/api/play-game-picolo`, localStorage.token)
 		}
 	},
 
