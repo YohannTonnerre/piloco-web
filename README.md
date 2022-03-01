@@ -77,3 +77,6 @@ php artisan serve
 
 ## Lauch front-end
 yarn run hot
+
+## Start socket
+php artisan websockets:serve
