@@ -58,7 +58,7 @@ Route::group(['prefix' => 'mode'], function () {
 Route::group(['prefix' => 'picolo'], function () {
     Route::get('all', [PicoloController::class, 'index']);
     Route::post('add', [PicoloController::class, 'store']);
-    Route::get('edit/{id}', [PicoloController::class, 'edit']);
+    Route::get('edit/{picolo}', [PicoloController::class, 'edit']);
     Route::get('show/{id}', [PicoloController::class, 'show']);
     Route::put('update/{id}', [PicoloController::class, 'update']);
     Route::delete('delete/{id}', [PicoloController::class, 'destroy']);

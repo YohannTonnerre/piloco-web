@@ -38,7 +38,7 @@
 			<label for="">Publié</label>
 			<input
 				class="form-control"
-				type="integer"
+				type="text"
 				placeholder="0"
 				v-model="form.published"
 			/>
@@ -60,7 +60,6 @@ export default {
 	data() {
 		return {
 			form: {
-				name: ''
 			},
 			modes: [],
 			status: null
@@ -70,6 +69,7 @@ export default {
 	methods: {
 
 		getPiloco: function () {
+			console.log(this.$route.params.id)
 			authenticatedFetch('GET', `/api/picolo/edit/${this.$route.params.id}`)
 				.then((res) => {
 					this.form = res.data

@@ -23,14 +23,13 @@ export const checkAdmin = () => {
         .then((res) => {
             authenticatedFetch('GET', `/api/user/${res.data}`).then((res) => {
 
-                if (res.data !== 'admin') {
+                if (res.data.role !== 'admin') {
                     router.push({ name: 'Dashboard' })
                 }
             })
         })
 
 }
-
 
 export const checkId = async () => {
     let tokenId = parseInt(localStorage.token.substr(0, localStorage.token.indexOf('|')))
