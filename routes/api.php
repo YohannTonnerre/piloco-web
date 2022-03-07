@@ -41,6 +41,11 @@ Route::post('logout', [LoginController::class, 'logout']);
 Route::get('token/{id}', [TokenController::class, 'index']);
 Route::get('user/{id}', [UserController::class, 'index']);
 
+Route::group(['prefix' => 'user'], function () {
+    Route::get('edit/{id}', [UserController::class, 'edit']);
+    Route::put('update/{id}', [UserController::class, 'update']);
+});
+
 Route::group(['prefix' => 'mode'], function () {
     Route::get('all', [ModeController::class, 'index']);
     Route::post('add', [ModeController::class, 'store']);

@@ -32,6 +32,13 @@ export const checkAdmin = () => {
 }
 
 
-export const userId = async () => {
-
+export const checkId = async () => {
+    let tokenId = parseInt(localStorage.token.substr(0, localStorage.token.indexOf('|')))
+    let id = null
+    await authenticatedFetch('GET', `/api/token/${tokenId}`)
+        .then((res) => {
+            id = res.data
+        })
+    console.log(id)
+    return Number(id)
 }

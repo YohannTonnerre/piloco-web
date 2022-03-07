@@ -22,17 +22,33 @@
 				</div>
 			</div>
 		</div>
+		<router-link :to="{ name: 'EditQuestion' }">Proposer une question</router-link>
+		<router-link :to="{ name: 'EditUser', params: { id: id } }">Modifier profil</router-link>
 	</div>
 </template>
 
 <script>
+import { checkId } from '../../utils'
 export default {
+	data() {
+		return {
+			id: null,
+		};
+	},
 	methods: {
 		logout() {
 			axios.post('/api/logout').then(() => {
 				this.$router.push({ name: 'Home' })
 			})
+		},
+		getId: function () {
+			checkId().then((num) =>
+				this.id = num
+			)
 		}
+	},
+	created() {
+		this.getId()
 	},
 }
 </script>
