@@ -22,8 +22,9 @@ export const checkAdmin = () => {
     authenticatedFetch('GET', `/api/token/${id}`)
         .then((res) => {
             authenticatedFetch('GET', `/api/user/${res.data}`).then((res) => {
+                console.log(res)
 
-                if (res.data !== 'admin') {
+                if (res.data.role !== 'admin') {
                     router.push({ name: 'Dashboard' })
                 }
             })
