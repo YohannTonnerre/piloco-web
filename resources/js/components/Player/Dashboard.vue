@@ -1,7 +1,5 @@
 <template>
 	<div>
-		<!-- <router-link :to="{ name: 'CreateRoom' }">Lancer une partie</router-link>
-		<button @click.prevent="logout">Logout</button> -->
 		<div class="dashboard">
 			<div class="piloco-presentation">
 				<img class="logo-size" src="/img/logo.png" alt="logo de piloco">
