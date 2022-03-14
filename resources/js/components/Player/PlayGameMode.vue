@@ -2,21 +2,27 @@
 	<div class="container-game-mode">
 		<h1> MODE DE JEU : </h1>
 		<p> Désigne l'intensité dalcool que vous allez ingurgez ! </p>
-		<div v-for="(mode, index) in modes" :key="index" @click="selectGame(`selectGame${index + 1}`)" 
-			:ref="`selectGame${index + 1}`" class="game-mode">
-			<div @click="submit(mode.id)"
-			 
-			class="button-game-mode"> 
-				<img class="logo-mode" :src="mode.image" alt="">
-				<div class="txt-game-mode"> {{mode.name}} </div>
-			</div>
-		</div>	
+		<div class="flex-align">
+			<div v-for="(mode, index) in modes" :key="index" class="game-mode">
+				<div @click="submit(mode.id)"
+				
+				class="button-game-mode"> 
+					<img class="logo-mode" :src="mode.image" alt="">
+					<div class="txt-game-mode"> {{mode.name}} </div>
+				</div>
+			</div>	
+		</div>
 	</div>
 
 </template>
 
 <style lang="scss">
 	@import "../../../sass/_variables.scss";
+
+	.flex-align{
+		margin-top: 2rem;
+		display: flex;
+	}
 
 	.lancer-partie{
 		background-color: $orange;
@@ -59,9 +65,8 @@
 	.game-mode{
 		display: flex;
 		justify-content: inherit;
-		width: 80%;
-		height: 80%;
-		max-height: 200px;
+		height: 170px;
+
 	}
 
 	.button-game-mode{
@@ -70,24 +75,15 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		margin: 10px;
+		margin: 0px 30px;
 		max-width: 150px;
-		width: 100%;
+		width: 130px;
 		background-color: $orange;
 		transition: 0.2s;
 		cursor: pointer;
 	}
 
 	.button-game-mode:hover{
-		border-radius: 5px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		margin: 10px;
-		max-width: 150px;
-		width: 100%;
-		background-color: $orange;
 		transform: scale(1.1);
 		transition: 0.2s;
 		cursor: pointer;
@@ -140,14 +136,6 @@ export default {
 					console.error(error)
 				})
 		},
-		selectGame(selectGame) {
-
-			this.$refs['selectGame1'].classList.remove('selectGame')
-			this.$refs['selectGame2'].classList.remove('selectGame')
-			this.$refs['selectGame3'].classList.remove('selectGame')
-			this.$refs['selectGame4'].classList.remove('selectGame')
-			this.$refs[selectGame].classList.add('selectGame')  
-		}
 	},
 
 	created() {
