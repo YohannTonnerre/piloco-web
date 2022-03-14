@@ -2,46 +2,17 @@
 	<div class="container-game-mode">
 		<h1> MODE DE JEU : </h1>
 		<p> Désigne l'intensité dalcool que vous allez ingurgez ! </p>
-
-			<div class="game-mode">
-				<div @click="selectGame('selectGame1')" ref="selectGame1" class="button-game-mode"> 
-						<img class="logo-mode" src="/img/facile-mode.png" alt="Mode Facile">
-					<div class="txt-game-mode"> Facile </div>
-				</div>
-				<div @click="selectGame('selectGame2')" ref="selectGame2" class="button-game-mode"> 
-						<img class="logo-mode" src="/img/medium-mode.png" alt="Mode Medium">
-					<div class="txt-game-mode"> Medium </div>
-				</div>
+		<div v-for="(mode, index) in modes" :key="index" @click="selectGame(`selectGame${index + 1}`)" 
+			:ref="`selectGame${index + 1}`" class="game-mode">
+			<div @click="submit(mode.id)"
+			 
+			class="button-game-mode"> 
+				<img class="logo-mode" :src="mode.image" alt="">
+				<div class="txt-game-mode"> {{mode.name}} </div>
 			</div>
-			<div class="game-mode">
-				<div @click="selectGame('selectGame3')" ref="selectGame3" class="button-game-mode"> 
-						<img class="logo-mode" src="/img/difficile-mode.png" alt="Mode Diffile">
-					<div class="txt-game-mode"> Difficile </div>
-				</div>
-				<div @click="selectGame('selectGame4')" ref="selectGame4" class="button-game-mode"> 
-						<img class="logo-mode" src="/img/alcooliques-mode.png" alt="Mode Alcoolique">
-					<div class="txt-game-mode"> Alcoolique </div>
-				</div>
-			</div>
-
-		<button class="lancer-partie"> Lancer la partie </button>
+		</div>	
 	</div>
 
-	<table class="table">
-		<tr>
-			<th>Name</th>
-			<th></th>
-		</tr>
-
-		<tr v-for="mode in modes" :key="mode">
-			<td>{{ mode.name }}</td>
-			<td>
-				<button @click="submit(mode.id)" class="btn btn-warning">
-					Jouer
-				</button>
-			</td>
-		</tr>
-	</table>
 </template>
 
 <style lang="scss">
