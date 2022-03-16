@@ -17,10 +17,14 @@ import AdminAddPiloco from "../components/Admin/AddPiloco"
 import AdminAllPilocos from "../components/Admin/AllPilocos"
 import AdminEditPiloco from "../components/Admin/EditPiloco"
 
+
+import AdminAllSuggestedPilocos from "../components/Admin/AllSuggestedPilocos"
+
 import Player from "../components/Player/Player"
 import Dashboard from "../components/Player/Dashboard"
 import CreateRoom from "../components/Player/CreateRoom"
 import PlayGameMode from "../components/Player/PlayGameMode"
+import WaitingRoom from "../components/Player/WaitingRoom"
 import PlayGamePicolo from "../components/Player/PlayGamePicolo"
 import EditQuestion from "../components/Player/EditQuestion"
 import EditUser from "../components/Player/EditUser"
@@ -47,6 +51,7 @@ const routes = [
             },
         ]
     },
+
     {
         path: '/player/',
         component: Player,
@@ -70,74 +75,16 @@ const routes = [
                 name: 'CreateRoom',
 
             },
-        ]
-    },
-    {
-        path: '/player/',
-        component: Player,
-        beforeEnter: (to, from, next) => {
-            axios.get('/api/authentificated').then(() => {
-                next()
-            }).catch(() => {
-                return next({ name: 'Login' })
-            })
-        },
-        children: [
-            {
-                path: '',
-                component: Dashboard,
-                name: 'Dashboard',
-
-            },
             {
                 path: 'edit-question',
                 component: EditQuestion,
                 name: 'EditQuestion',
 
             },
-        ]
-    },
-    {
-        path: '/player/',
-        component: Player,
-        beforeEnter: (to, from, next) => {
-            axios.get('/api/authentificated').then(() => {
-                next()
-            }).catch(() => {
-                return next({ name: 'Login' })
-            })
-        },
-        children: [
-            {
-                path: '',
-                component: Dashboard,
-                name: 'Dashboard',
-
-            },
             {
                 path: 'edit-user/:id',
                 component: EditUser,
                 name: 'EditUser',
-
-            },
-        ]
-    },
-
-    {
-        path: '/player/',
-        component: Player,
-        beforeEnter: (to, from, next) => {
-            axios.get('/api/authentificated').then(() => {
-                next()
-            }).catch(() => {
-                return next({ name: 'Login' })
-            })
-        },
-        children: [
-            {
-                path: '',
-                component: Dashboard,
-                name: 'Dashboard',
 
             },
             {
@@ -153,8 +100,18 @@ const routes = [
                 props: true
 
             },
+            {
+                path: 'waiting-room/:room&:gameId&:difficultyId',
+                component: WaitingRoom,
+                name: 'WaitingRoom',
+                props: true
+
+            },
         ]
     },
+
+
+
 
 
     {
@@ -192,6 +149,12 @@ const routes = [
                 path: 'all-pilocos',
                 component: AdminAllPilocos,
                 name: 'AdminAllPilocos'
+            },
+            {
+                path: 'all-suggested-pilocos',
+                component: AdminAllSuggestedPilocos,
+                name: 'AdminAllSuggestedPilocos'
+
             },
             {
                 path: 'add-piloco',
