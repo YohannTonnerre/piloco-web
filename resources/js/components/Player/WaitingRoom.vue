@@ -8,14 +8,18 @@
 				:index="index + 1"
 			/>
 		</div>
-		<button v-if="user == players[0].id" @click="redirect">Jouer</button>
-		<input
-			v-on:focus="$event.target.select()"
-			ref="myinput"
-			readonly
-			:value="share"
-			@click="shareCopy"
-		/>
+		<div v-if="players.length !== 0">
+			<button v-if="user == players[0].id" @click="redirect">
+				Jouer
+			</button>
+			<input
+				v-on:focus="$event.target.select()"
+				ref="myinput"
+				readonly
+				:value="share"
+				@click="shareCopy"
+			/>
+		</div>
 		<!-- <router-link
 			:to="{
 				name: 'PlayGamePicolo',
@@ -71,6 +75,12 @@ export default {
 
 		redirect: function () {
 
+			authenticatedFetch(
+				"POST",
+				`/api/redirect`
+			)
+
+
 		},
 
 
@@ -119,6 +129,18 @@ export default {
 			.listen('Test', (e) => {
 				console.log(e)
 				this.getGame()
+			})
+
+		window.Echo.channel('redirect')
+			.listen('Redirect', (e) => {
+				this.$router.push({
+					name: 'PlayGamePicolo',
+					params: {
+						difficultyId: this.$attrs.difficultyId,
+						room: this.$attrs.room,
+						gameId: this.$attrs.gameId,
+					}
+				})
 			})
 
 	},
