@@ -8,7 +8,7 @@
 				:index="index + 1"
 			/>
 		</div>
-		<button @click="redirect">Jouer</button>
+		<button v-if="user == players[0].id" @click="redirect">Jouer</button>
 		<input
 			v-on:focus="$event.target.select()"
 			ref="myinput"
@@ -48,17 +48,7 @@ export default {
 
 	methods: {
 
-		allPicolo: function () {
-			authenticatedFetch(
-				"get",
-				`/api/picolo/show/${this.$attrs.difficultyId}/`
-			).then((res) => {
-				this.picolos = res.data
-			})
-		},
-		next: function (i) {
-			this.i += 1
-		},
+
 		shareCopy: function () {
 			this.$refs.myinput.focus()
 			document.execCommand('copy')
@@ -120,7 +110,6 @@ export default {
 	},
 
 	created() {
-		this.allPicolo()
 		this.getUser()
 		this.getShareLink()
 
