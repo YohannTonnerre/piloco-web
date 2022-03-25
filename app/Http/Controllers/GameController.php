@@ -7,6 +7,8 @@ use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\UpdateGameRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Events\Test;
+use App\Events\Redirect;
+use App\Events\Next;
 
 class GameController extends Controller
 {
@@ -23,7 +25,13 @@ class GameController extends Controller
 
     public function redirect()
     {
-        //
+        broadcast(new Redirect());  
+    }
+
+    public function next()
+    {
+       
+        broadcast(new Next());
     }
 
     /**
