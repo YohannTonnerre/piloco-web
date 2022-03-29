@@ -50,6 +50,8 @@ export default {
 			await axios.get('/sanctum/csrf-cookie').then(response => {
 				axios.post('/api/login', this.form)
 					.then((response) => {
+						localStorage.name = response.data[0].name
+						console.log(localStorage.name)
 						localStorage.token = response.data[2]
 						this.$router.push({ name: 'Dashboard' })
 					}).catch((error) => {

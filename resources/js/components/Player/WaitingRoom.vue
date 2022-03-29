@@ -1,37 +1,52 @@
 <template>
 	<section class="waiting-room-container">
 		<div class="left-container-waiting-room">
-			<div class="waiting-room-menu">
-				<img
-					src="/img/arrow-left.png"
-					alt="Revenir à l'accueil"
-					class="arrow-left"
-				/>
-				<div>Accueil</div>
-			</div>
-			<div class="player-card-container">
-				<player-card
-					v-for="(player, index) in players"
-					:key="index"
-					:playerName="player.name"
-					:index="index + 1"
-				/>
+			<router-link class="link-dashboard-wainting-room" :to="{ name: 'Dashboard' }">
+				<div class="waiting-room-menu">
+					<img
+						src="/img/arrow-left.png"
+						alt="Revenir à l'accueil"
+						class="arrow-left"
+					/>
+					<div>Accueil</div>
+				</div>
+			</router-link>
+			<div class="container-beer-players">
+				<div v-if="players.length == 1" class="wait-players"> 
+					En attente de joueurs supplémentaires ...
+					<div class="animation-loader"></div>
+				</div>
+				<div v-else class="else-player-cards">
+					<player-card
+						v-for="(player, index) in players"
+						:key="index"
+						:playerName="player.name"
+						:index="index + 1"
+					/>
+				</div>
 			</div>
 			<div
 				v-if="players.length !== 0"
 				class="container-parametre-parties"
 			>
 				<div>
-					<input
+					<input class="input-code"
 						v-on:focus="$event.target.select()"
 						ref="myinput"
 						readonly
 						:value="share"
 						@click="shareCopy"
 					/>
-					<button @click="shareCopy">Copy</button>
+					<button class="btn-code" @click="shareCopy"> Copy </button>
 				</div>
 			</div>
+							<div class="footer-piloco">
+						<p>
+							Piloco.fr <br> 
+							Made with &#9829; - v1.0 
+						</p>
+					
+				</div>
 		</div>
 		<div class="right-container-waiting-room">
 			<div>
@@ -42,12 +57,12 @@
 			</div>
 
 			<div class="container-mode-selection">
-				<div class="button-game-mode">
+				<div class="button-game-mode-waiting-room">
 					<img class="logo-mode" :src="mode.image" alt="" />
 					<div class="txt-game-mode">{{ mode.name }}</div>
 				</div>
 
-				<router-link :to="{ name: 'PlayGameMode' }">
+				<router-link class="rootlink-modifier" :to="{ name: 'PlayGameMode' }">
 					<div class="container-modifier-mode">
 						<img
 							class="modifier-mode"

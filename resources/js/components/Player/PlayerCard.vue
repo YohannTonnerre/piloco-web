@@ -1,8 +1,7 @@
 <template>
-	<span class="player-card">
-		<img :src="`/img/beer${index}.svg`" alt="" />
+	<div class="container-beer" :style="`background-image: url('/img/beer${index}.svg')`">
 		<span>{{ playerName }}</span>
-	</span>
+	</div>
 </template>
 
 <script>
