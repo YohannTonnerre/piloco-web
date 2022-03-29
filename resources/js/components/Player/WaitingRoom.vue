@@ -1,36 +1,55 @@
 <template>
 	<section class="waiting-room-container">
-		<div class="player-card-container">
-			<player-card
-				v-for="(player, index) in players"
-				:key="index"
-				:playerName="player.name"
-				:index="index + 1"
-			/>
+		<div class='left-container-waiting-room'>
+			<div class="waiting-room-menu">
+				<img src="/img/arrow-left.png" alt="Revenir à l'accueil" class="arrow-left" />
+				<div>Accueil </div>
+			</div>
+			<div class="player-card-container">
+				<player-card
+					v-for="(player, index) in players"
+					:key="index"
+					:playerName="player.name"
+					:index="index + 1"
+				/>
+			</div>
+			<div v-if="players.length !== 0" class="container-parametre-parties">
+				<div>
+					<input
+						v-on:focus="$event.target.select()"
+						ref="myinput"
+						readonly
+						:value="share"
+						@click="shareCopy"
+					/>
+					<button @click="shareCopy"> Copy </button>
+				</div>
+			</div>
 		</div>
-		<div v-if="players.length !== 0">
-			<button v-if="user == players[0].id" @click="redirect">
-				Jouer
+		<div class='right-container-waiting-room'>
+			<div>
+				<h1 class="text-align-center"> Mode de jeu sélectionné :</h1>
+				<p class="text-align-center"> Désigne l’intensité d’alcool que vous allez ingurgez ! </p>
+			</div>
+
+			<div class="container-mode-selection">
+				<div class="button-game-mode"> 
+					<img class="logo-mode" :src="mode.image" alt="">
+					<div class="txt-game-mode"> {{mode.name}} </div>
+				</div>
+
+				<router-link :to="{ name: 'PlayGameMode' }">
+					<div class="container-modifier-mode">
+						<img class="modifier-mode" src="/img/modifier-mode.svg" alt="modifier le mode">
+						<div> Modifier </div>
+					</div>	
+				</router-link>
+			</div>			
+
+			<button class="start-game" v-if="user == players[0].id" @click="redirect">
+				Lancer la partie
 			</button>
-			<input
-				v-on:focus="$event.target.select()"
-				ref="myinput"
-				readonly
-				:value="share"
-				@click="shareCopy"
-			/>
 		</div>
-		<!-- <router-link
-			:to="{
-				name: 'PlayGamePicolo',
-				params: {
-					difficultyId: this.$attrs.difficultyId,
-					room: this.$attrs.room,
-					gameId: this.$attrs.gameId,
-				},
-			}"
-			>Jouer</router-link
-		> -->
 	</section>
 </template>
 
@@ -46,7 +65,8 @@ export default {
 			i: 0,
 			user: null,
 			players: [],
-			share: ''
+			share: '',
+			mode: {}
 		}
 	},
 
@@ -108,20 +128,27 @@ export default {
 			).then((res) => {
 				this.players = res.data
 
-
-
 			})
 		},
 		getShareLink: function () {
 			let params = this.$route.params
 
 			this.share = `${params.room}&${params.gameId}&${params.difficultyId}`
+		},
+		getMode: function () {
+			authenticatedFetch(
+				"GET",
+				`/api/mode/show/${this.$attrs.difficultyId}/`
+			).then((res) => {
+				this.mode = res.data[0]
+			})
 		}
 	},
 
 	created() {
 		this.getUser()
 		this.getShareLink()
+		this.getMode()
 
 	},
 	mounted() {

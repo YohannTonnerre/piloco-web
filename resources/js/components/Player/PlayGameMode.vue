@@ -68,8 +68,9 @@
 		height: 170px;
 
 	}
-
+	
 	.button-game-mode{
+		min-height: 150px;
 		border-radius: 5px;
 		display: flex;
 		flex-direction: column;

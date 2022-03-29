@@ -44,9 +44,6 @@
 		<router-link :to="{ name: 'EditQuestion' }"
 			>Proposer une question</router-link
 		>
-		<!-- <router-link :to="{ name: 'EditUser', params: { id: id } }"
-			>Modifier profil</router-link
-		> -->
 		<button @click.prevent="logout">Logout</button>
 	</div>
 
@@ -155,6 +152,7 @@ export default {
 	}
 
 	.btn-creer-partie {
+		cursor: pointer;
 		background-color: $orange;
 		color: $white;
 		font-size: 2rem;
