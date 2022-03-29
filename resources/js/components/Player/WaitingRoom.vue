@@ -1,9 +1,13 @@
 <template>
 	<section class="waiting-room-container">
-		<div class='left-container-waiting-room'>
+		<div class="left-container-waiting-room">
 			<div class="waiting-room-menu">
-				<img src="/img/arrow-left.png" alt="Revenir à l'accueil" class="arrow-left" />
-				<div>Accueil </div>
+				<img
+					src="/img/arrow-left.png"
+					alt="Revenir à l'accueil"
+					class="arrow-left"
+				/>
+				<div>Accueil</div>
 			</div>
 			<div class="player-card-container">
 				<player-card
@@ -13,7 +17,10 @@
 					:index="index + 1"
 				/>
 			</div>
-			<div v-if="players.length !== 0" class="container-parametre-parties">
+			<div
+				v-if="players.length !== 0"
+				class="container-parametre-parties"
+			>
 				<div>
 					<input
 						v-on:focus="$event.target.select()"
@@ -22,33 +29,44 @@
 						:value="share"
 						@click="shareCopy"
 					/>
-					<button @click="shareCopy"> Copy </button>
+					<button @click="shareCopy">Copy</button>
 				</div>
 			</div>
 		</div>
-		<div class='right-container-waiting-room'>
+		<div class="right-container-waiting-room">
 			<div>
-				<h1 class="text-align-center"> Mode de jeu sélectionné :</h1>
-				<p class="text-align-center"> Désigne l’intensité d’alcool que vous allez ingurgez ! </p>
+				<h1 class="text-align-center">Mode de jeu sélectionné :</h1>
+				<p class="text-align-center">
+					Désigne l’intensité d’alcool que vous allez ingurgez !
+				</p>
 			</div>
 
 			<div class="container-mode-selection">
-				<div class="button-game-mode"> 
-					<img class="logo-mode" :src="mode.image" alt="">
-					<div class="txt-game-mode"> {{mode.name}} </div>
+				<div class="button-game-mode">
+					<img class="logo-mode" :src="mode.image" alt="" />
+					<div class="txt-game-mode">{{ mode.name }}</div>
 				</div>
 
 				<router-link :to="{ name: 'PlayGameMode' }">
 					<div class="container-modifier-mode">
-						<img class="modifier-mode" src="/img/modifier-mode.svg" alt="modifier le mode">
-						<div> Modifier </div>
-					</div>	
+						<img
+							class="modifier-mode"
+							src="/img/modifier-mode.svg"
+							alt="modifier le mode"
+						/>
+						<div>Modifier</div>
+					</div>
 				</router-link>
-			</div>			
-
-			<button class="start-game" v-if="user == players[0].id" @click="redirect">
-				Lancer la partie
-			</button>
+			</div>
+			<div v-if="players.length !== 0">
+				<button
+					class="start-game"
+					v-if="user == players[0].id"
+					@click="redirect"
+				>
+					Lancer la partie
+				</button>
+			</div>
 		</div>
 	</section>
 </template>
