@@ -4,18 +4,18 @@
 			@click="this.$emit('closePopUp')"
 			class="fake-pop-up-container"
 		></div>
-		<div class="pop-up">
-			<form class="admin-form" @submit.prevent="submit">
-		<h1>Add picolo</h1>
-		<div class="mb-3">
-			<label for="">Mode</label>
+		<div class="pop-up pop-up-add-question">
+			<form class="admin-form add-questions" @submit.prevent="submit">
+		<h1 class="title-proposer-question"> Proposer une question </h1>
+		<div class="mb-3 mt-3">
+			<label for="">Difficulté de la question</label>
 			<select
 				v-if="modes.length !== 0"
 				class="form-select form-control"
 				v-model="form.mode"
 			>
-				<option value="" selected disabled hidden>
-					--Choisir un mode--
+				<option value="">
+					-- Choisir un mode --
 				</option>
 				<option v-for="mode in modes" :key="mode" :value="mode.id">
 					{{ mode.name }}
@@ -23,16 +23,16 @@
 			</select>
 		</div>
 		<div class="mb-3">
-			<label for="">Text</label>
+			<label for=""> Insérer votre question </label>
 			<textarea
 				class="form-control"
 				v-model="form.text"
-				placeholder="Le texte"
+				placeholder="Entrer votre question"
 			></textarea>
 		</div>
 
 		<div class="mb-3">
-			<label for="">Gorgée</label>
+			<label for=""> Nombre de gorgée </label>
 			<input
 				class="form-control"
 				type="text"
@@ -40,7 +40,7 @@
 				v-model="form.sip"
 			/>
 		</div>
-		<input class="btn btn-primary" type="submit" />
+		<input class="btn btn-primary envoyer-question" type="submit" />
 		<p v-if="status !== null">
 			{{
 				status == 200
