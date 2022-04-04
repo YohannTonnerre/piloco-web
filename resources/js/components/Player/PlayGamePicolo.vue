@@ -1,21 +1,34 @@
 <template>
-	<div class="container-game" @click="next(i)" >
-		<router-link class="link-dashboard" :to="{name: 'Dashboard'}"> 
-	
+	<div class="container-game">
+		<router-link class="link-dashboard" :to="{ name: 'Dashboard' }">
 			<div class="menu">
-				<img src="/img/arrow-left.png" alt="retour au menu" class="arrow-left" />
+				<img
+					src="/img/arrow-left.png"
+					alt="retour au menu"
+					class="arrow-left"
+				/>
 
-				<div>
-					Retour au menu
-				</div>
+				<div>Retour au menu</div>
 			</div>
 		</router-link>
 
-		<p class="question-game" v-if="picolos.length !== 0 && !isEnded">{{ picolos[i].text }}</p>
-		<div class="question-game" v-if="isEnded"> 
-			<p class="color-winner"> La partie est terminer ! <br> Le gagnant est le plus arraché ! </p>
-			<router-link class="link-dashboard" :to="{name: 'Dashboard'}"> 
-				<button class="btn-link-dashboard"> Revenir au menu ! </button>
+		<p class="question-game" v-if="picolos.length !== 0 && !isEnded">
+			<span>{{ players[i % players.length].name }}</span>
+			{{ picolos[i].text }}
+			<button
+				v-if="players[i % players.length].id == user"
+				@click="next(i)"
+			>
+				next
+			</button>
+		</p>
+		<div class="question-game" v-if="isEnded">
+			<p class="color-winner">
+				La partie est terminer ! <br />
+				Le gagnant est le plus arraché !
+			</p>
+			<router-link class="link-dashboard" :to="{ name: 'Dashboard' }">
+				<button class="btn-link-dashboard">Revenir au menu !</button>
 			</router-link>
 		</div>
 
@@ -23,9 +36,8 @@
 			Joueurs :
 			<span v-for="player in players" :key="player">
 				<player-card class="player-name" :playerName="player.name" />
-			</span>	
+			</span>
 		</div>
-
 	</div>
 </template>
 
@@ -132,9 +144,9 @@ export default {
 			})
 		window.Echo.channel('next')
 			.listen('Next', (e) => {
-				if(this.i < this.picolos.length - 1) {
+				if (this.i < this.picolos.length - 1) {
 					this.i += 1
-				}else{
+				} else {
 					this.isEnded = true
 				}
 			})
@@ -145,5 +157,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import "../../../sass/app.scss";
+@import "../../../sass/app.scss";
 </style>
