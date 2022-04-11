@@ -134,9 +134,14 @@ export default {
 
 		redirect: function () {
 
+			const data = {
+				id: this.share
+			}
+
 			authenticatedFetch(
 				"POST",
-				`/api/redirect`
+				`/api/redirect`,
+				data
 			)
 
 
@@ -199,6 +204,7 @@ export default {
 
 		window.Echo.channel('redirect')
 			.listen('Redirect', (e) => {
+				console.log(e)
 				this.$router.push({
 					name: 'PlayGamePicolo',
 					params: {
