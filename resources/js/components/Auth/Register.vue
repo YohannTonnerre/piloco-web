@@ -91,7 +91,7 @@ export default {
 			if (this.form.password === this.form.password_confirmation) {
 				axios.post('/api/register', this.form)
 					.then((res) => {
-						console.log(res)
+						// console.log(res)
 						localStorage.name = res.data[0].name
 						localStorage.token = res.data[2]
 						this.$router.push({ name: 'Dashboard' })

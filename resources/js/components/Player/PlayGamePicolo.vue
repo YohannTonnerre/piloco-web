@@ -24,7 +24,7 @@
 		</p>
 		<div class="question-game" v-if="isEnded">
 			<p class="color-winner">
-				La partie est terminer ! <br />
+				La partie est terminé ! <br />
 				Le gagnant est le plus arraché !
 			</p>
 			<router-link class="link-dashboard" :to="{ name: 'Dashboard' }">
@@ -124,7 +124,7 @@ export default {
 		},
 		getFirstQuestion: function (e) {
 			if (this.players.length !== 0 && this.user !== this.players[0].id) {
-				console.log(e)
+				// console.log(e)
 
 				this.picolos = e[0]
 				this.getGame()

@@ -70,7 +70,7 @@ export default {
 						this.$router.push({ name: 'Dashboard' })
 					}).catch((error) => {
 						this.form.loginExist = true
-						console.log(this.form.loginExist)
+						// console.log(this.form.loginExist)
 						this.errors = error.response.data.errors
 					})
 			})
