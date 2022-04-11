@@ -42,6 +42,6 @@ class Redirect implements ShouldBroadcast
     public function broadcastOn()
     {
         // dd($request);
-        return new Channel('redirect');
+        return new PrivateChannel('redirect.'.$this->gameId);
     }
 }

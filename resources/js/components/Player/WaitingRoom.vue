@@ -135,7 +135,7 @@ export default {
 		redirect: function () {
 
 			const data = {
-				id: this.share
+				id: this.$attrs.gameId
 			}
 
 			authenticatedFetch(
@@ -143,6 +143,9 @@ export default {
 				`/api/redirect`,
 				data
 			)
+				.then((res) => {
+					console.log(res)
+				})
 
 
 		},
@@ -202,7 +205,7 @@ export default {
 				this.getGame()
 			})
 
-		window.Echo.channel('redirect')
+		window.Echo.private(`redirect.${this.$attrs.gameId}`)
 			.listen('Redirect', (e) => {
 				console.log(e)
 				this.$router.push({
