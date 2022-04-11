@@ -38,6 +38,11 @@
 				<player-card class="player-name" :playerName="player.name" />
 			</span>
 		</div>
+
+		<div
+			:style="`width: ${(i / picolos.length) * 100}%`"
+			class="progression-bar"
+		></div>
 	</div>
 </template>
 
@@ -147,6 +152,7 @@ export default {
 				if (this.i < this.picolos.length - 1) {
 					this.i += 1
 				} else {
+					this.i += 1
 					this.isEnded = true
 				}
 			})
