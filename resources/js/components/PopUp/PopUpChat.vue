@@ -27,12 +27,13 @@ export default {
 	props: {
 		gameId: String,
 		user: Number,
-		players: Array
+		players: Array,
+		messages: Array
 	},
 	data() {
 		return {
 			msg: '',
-			messages: []
+			newMessage: false
 		}
 	},
 
@@ -58,18 +59,6 @@ export default {
 		}
 	},
 
-	mounted() {
-		window.Echo.private(`msg.${this.gameId}`)
-			.listen('Msg', (e) => {
-				console.log(e)
-				this.messages.push(e)
-
-				if (this.messages.length >= 10) {
-					this.messages.shift()
-				}
-
-			})
-	},
 }
 </script>
 

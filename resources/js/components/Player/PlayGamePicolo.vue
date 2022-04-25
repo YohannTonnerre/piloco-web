@@ -2,11 +2,15 @@
 	<div class="container-game">
 		<div class="game-tchat">
 			<img
-				@click="popUp = !popUp"
+				@click="
+					popUp = !popUp;
+					notif = false;
+				"
 				class="game-tchat-style"
 				src="/img/message.png"
 				alt=""
 			/>
+			<span v-if="notif">!</span>
 		</div>
 		<router-link class="link-dashboard" :to="{ name: 'Dashboard' }">
 			<div class="menu">
@@ -53,11 +57,13 @@
 			class="progression-bar"
 		></div>
 		<pop-up-chat
+			@newMessage="notif = true"
 			v-if="popUp"
 			@closePopUp="popUp = !popUp"
 			:players="players"
 			:user="user"
 			:gameId="gameId"
+			:messages="messages"
 		/>
 	</div>
 </template>
@@ -65,10 +71,9 @@
 <script>
 import { authenticatedFetch } from "../../utils"
 import PopUpChat from '../PopUp/PopUpChat.vue'
-import Chat from './Chat.vue'
 import PlayerCard from './PlayerCard.vue'
 export default {
-	components: { PlayerCard, Chat, PopUpChat },
+	components: { PlayerCard, PopUpChat },
 
 	data() {
 		return {
@@ -78,7 +83,9 @@ export default {
 			players: [],
 			isEnded: false,
 			gameId: null,
-			popUp: false
+			popUp: false,
+			notif: false,
+			messages: []
 		}
 	},
 
@@ -180,6 +187,17 @@ export default {
 					this.i += 1
 					this.isEnded = true
 				}
+			})
+
+		window.Echo.private(`msg.${this.gameId}`)
+			.listen('Msg', (e) => {
+				this.messages.push(e)
+				this.notif = true
+
+				if (this.messages.length >= 10) {
+					this.messages.shift()
+				}
+
 			})
 
 
