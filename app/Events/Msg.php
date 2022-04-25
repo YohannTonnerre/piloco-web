@@ -12,27 +12,29 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Picolo;
 
-class Next implements ShouldBroadcast
+class Msg implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
 
-    public $gameId; 
+    public $gameMsg; 
     /**
      * Create a new event instance.
      *
      * @return void
      */
 
-    public function __construct($gameId)
+    public function __construct($gameMsg)
     {
-        $this->gameId = $gameId;
+        $this->gameMsg = $gameMsg;
     }
 
     public function broadcastWith(){
       
         return [
-            'next'
+            $this->gameMsg['user'],
+            $this->gameMsg['msg'],
+
         ];
     }
 
@@ -43,7 +45,7 @@ class Next implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        // dd($request);
-        return new PrivateChannel('next.'.$this->gameId);
+        // dd($this->gameMsg['gameId']);
+        return new PrivateChannel('msg.'.$this->gameMsg['gameId']);
     }
 }
