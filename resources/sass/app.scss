@@ -182,6 +182,10 @@
         position: relative;
         padding: 40px 30px;
         background-color: $white;
+
+        &.pop-up-chat {
+            width: 40%;
+        }
     }
 
     .container-join-input {
@@ -549,37 +553,58 @@
 }
 
 .chat-container {
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .msg {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+
+        &.own-message {
+            align-items: flex-end;
+
+            .message-chat {
+                background-color: grey;
+            }
+        }
+    }
+
     .message-sent {
-        border: 2px solid white;
-        background-color: black;
+        border: 2px solid $yellow;
+        background-color: $white;
         border-radius: 3px;
         color: black;
         margin-right: 5px;
 
-        &::placeholder{
+        &::placeholder {
             color: black;
         }
     }
 
-    .message-submit{
+    .message-submit {
         color: white;
         border: 2px solid #F3B61F;
         border-radius: 3px;
         background-color: #F3B61F;
         transition: 0.2s;
 
-        &:hover{
+        &:hover {
             background-color: white;
             color: black;
             transition: 0.2s;
         }
     }
 
-    .user-name-chat{
+    .user-name-chat {
         color: black;
         font-size: 0.5rem;
     }
-    .message-chat{
+
+    .message-chat {
         background-color: #F3B61F;
         border-radius: 5px;
         width: fit-content;
