@@ -6,7 +6,11 @@
 		></div>
 		<div class="pop-up">
 			<div class="chat-container">
-				<div v-for="message in messages" :key="message">
+				<div
+					:class="message[0] == user ? 'own-message' : ''"
+					v-for="message in messages"
+					:key="message"
+				>
 					<span class="user-name-chat">{{
 						getUser(message[0])
 					}}</span>

@@ -58,8 +58,8 @@
 		></div>
 		<pop-up-chat
 			@newMessage="notif = true"
-			v-if="popUp"
 			@closePopUp="popUp = !popUp"
+			v-if="popUp"
 			:players="players"
 			:user="user"
 			:gameId="gameId"
@@ -192,7 +192,9 @@ export default {
 		window.Echo.private(`msg.${this.gameId}`)
 			.listen('Msg', (e) => {
 				this.messages.push(e)
-				this.notif = true
+				if (this.messages[this.messages.length - 1][0] !== this.user && !this.popUp) {
+					this.notif = true
+				}
 
 				if (this.messages.length >= 10) {
 					this.messages.shift()
