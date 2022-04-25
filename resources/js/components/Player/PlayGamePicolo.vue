@@ -42,7 +42,6 @@
 		</div>
 
 		<div class="container-players">
-			Joueurs :
 			<span v-for="player in players" :key="player">
 				<player-card class="player-name" :playerName="player.name" />
 			</span>
@@ -65,10 +64,9 @@
 <script>
 import { authenticatedFetch } from "../../utils"
 import PopUpChat from '../PopUp/PopUpChat.vue'
-import Chat from './Chat.vue'
 import PlayerCard from './PlayerCard.vue'
 export default {
-	components: { PlayerCard, Chat, PopUpChat },
+	components: { PlayerCard, PopUpChat },
 
 	data() {
 		return {

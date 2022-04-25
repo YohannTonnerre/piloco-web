@@ -310,14 +310,16 @@
     }
 
     .container-players {
+        background-color: $orange;
         display: flex;
         justify-content: center;
         align-items: center;
         width: inherit;
         display: flex;
-        position: absolute;
+        position: fixed;
         bottom: 0;
         color: white;
+        max-height: 50px;
     }
 
     .player-name {
@@ -329,7 +331,7 @@
         bottom: 0;
         left: 0;
         height: 4px;
-        background-color: $yellow;
+        background-color: $white;
         transition: .4s ease;
     }
 }
@@ -534,22 +536,37 @@
 
 .chat-container{
     .message-sent{
-        border: 2px solid white;
-        background-color: black;
+        border: 2px solid #F3B61F;
+        background-color: white;
         border-radius: 3px;
-        color: white;
+        color: black;
         margin-right: 5px;
 
         &::placeholder{
-            color: white;
+            color: black;
+        }
+    }
+
+    .message-submit{
+        color: white;
+        border: 2px solid #F3B61F;
+        border-radius: 3px;
+        background-color: #F3B61F;
+        transition: 0.2s;
+
+        &:hover{
+            background-color: white;
+            color: black;
+            transition: 0.2s;
         }
     }
 
     .user-name-chat{
+        color: black;
         font-size: 0.5rem;
     }
     .message-chat{
-        background-color: red;
+        background-color: #F3B61F;
         border-radius: 5px;
         width: fit-content;
         padding: 5px 10px;

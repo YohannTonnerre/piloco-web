@@ -13,8 +13,8 @@
 					<p class="message-chat">{{ message[1] }}</p>
 				</div>
 				<form @submit.prevent="submit">
-					<input type="text" v-model="msg" />
-					<input type="submit" value="Envoyer" />
+					<input class="message-sent" type="text" placeholder="message" v-model="msg" />
+					<input class="message-submit" type="submit" value="Envoyer" />
 				</form>
 			</div>
 		</div>
