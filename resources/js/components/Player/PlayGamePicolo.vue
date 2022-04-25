@@ -1,7 +1,12 @@
 <template>
 	<div class="container-game">
 		<div class="game-tchat">
-			<img class="game-tchat-style" src="/img/message.png" alt="" />
+			<img
+				@click="popUp = !popUp"
+				class="game-tchat-style"
+				src="/img/message.png"
+				alt=""
+			/>
 		</div>
 		<router-link class="link-dashboard" :to="{ name: 'Dashboard' }">
 			<div class="menu">
@@ -17,8 +22,9 @@
 
 		<p class="question-game" v-if="picolos.length !== 0 && !isEnded">
 			<span>{{ players[i % players.length].name }}</span>
-			{{ picolos[i].text }} <br>
-			<button class="question-game-btn"
+			{{ picolos[i].text }} <br />
+			<button
+				class="question-game-btn"
 				v-if="players[i % players.length].id == user"
 				@click="next(i)"
 			>
@@ -46,16 +52,23 @@
 			:style="`width: ${(i / picolos.length) * 100}%`"
 			class="progression-bar"
 		></div>
-		<chat :players="players" :user="user" :gameId="gameId" />
+		<pop-up-chat
+			v-if="popUp"
+			@closePopUp="popUp = !popUp"
+			:players="players"
+			:user="user"
+			:gameId="gameId"
+		/>
 	</div>
 </template>
 
 <script>
 import { authenticatedFetch } from "../../utils"
+import PopUpChat from '../PopUp/PopUpChat.vue'
 import Chat from './Chat.vue'
 import PlayerCard from './PlayerCard.vue'
 export default {
-	components: { PlayerCard, Chat },
+	components: { PlayerCard, Chat, PopUpChat },
 
 	data() {
 		return {
@@ -64,7 +77,8 @@ export default {
 			user: null,
 			players: [],
 			isEnded: false,
-			gameId: null
+			gameId: null,
+			popUp: false
 		}
 	},
 
