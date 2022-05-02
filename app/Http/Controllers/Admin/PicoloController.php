@@ -17,7 +17,7 @@ class PicoloController extends Controller
      */
     public function index()
     {
-        $picolos = Picolo::all();
+        $picolos = Picolo::orderBy('id')->get();
 
         return $picolos;
     }
