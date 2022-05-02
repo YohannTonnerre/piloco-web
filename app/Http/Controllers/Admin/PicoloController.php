@@ -78,7 +78,7 @@ class PicoloController extends Controller
      */
     public function show($id)
     {
-        $picolos = Picolo::where('mode', $id)->inRandomOrder()->limit(5)->get();
+        $picolos = Picolo::where([['mode', $id],['published', 1]])->inRandomOrder()->limit(5)->get();
         broadcast(new Play($picolos));
         return $picolos;
     }
