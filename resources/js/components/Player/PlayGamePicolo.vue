@@ -26,7 +26,7 @@
 
 		<p class="question-game" v-if="picolos.length !== 0 && !isEnded">
 			<span>{{ players[i % players.length].name }}</span>
-			{{ picolos[i].text }} <br />
+			{{ picolos[i].sip }} {{ picolos[i].text }} <br />
 			<button
 				class="question-game-btn"
 				v-if="players[i % players.length].id == user"

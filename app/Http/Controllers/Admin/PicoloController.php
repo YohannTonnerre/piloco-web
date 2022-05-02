@@ -65,6 +65,7 @@ class PicoloController extends Controller
             'mode' => 'required',
             'text' => 'required',
             'sip' => 'required',
+            'published' => 'required',
         ]);
         
 
