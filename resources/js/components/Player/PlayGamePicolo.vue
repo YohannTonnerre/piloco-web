@@ -37,7 +37,7 @@
 		</p>
 		<div class="question-game" v-if="isEnded">
 			<p class="color-winner">
-				La partie est terminé ! <br />
+				La partie est terminée ! <br />
 				Le gagnant est le plus arraché !
 			</p>
 			<router-link class="link-dashboard" :to="{ name: 'Dashboard' }">
