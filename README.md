@@ -2,7 +2,7 @@ Projet dev: Piloco
 
 ## Fonctionnement
 
-Le principe du jeu est de faire ou répondre à une question ou une action proposé par le jeu. L'echec entrainera des gorgés.
+Le principe du jeu est de faire ou répondre à une question ou une action proposé par le jeu. L'echec entrainera des gorgées.
 
 // Difficulté: 1
 - Faire apparaître les questions en mode aléatoires sans les répéter
