@@ -114,10 +114,10 @@ php artisan key:generate
 php artisan migrate:fresh --seed
 yarn install
 
-## Lauch server
+## Start Laravel
 php artisan serve --host=localhost
 
-## Lauch front-end
+## Start Vue
 yarn run hot
 
 ## Start socket
