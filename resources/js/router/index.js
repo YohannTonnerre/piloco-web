@@ -51,13 +51,7 @@ const routes = [
     {
         path: '/',
         component: Player,
-        beforeEnter: (to, from, next) => {
-            axios.get('/api/authentificated').then(() => {
-                next()
-            }).catch(() => {
-                return next({ name: 'Login' })
-            })
-        },
+
         children: [
             {
                 path: '',

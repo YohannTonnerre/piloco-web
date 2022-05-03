@@ -14,7 +14,9 @@
 						class="form-select form-control"
 						v-model="form.mode"
 					>
-						<option value="">-- Choisir un mode --</option>
+						<option selected hidden value="">
+							-- Choisir un mode --
+						</option>
 						<option
 							v-for="mode in modes"
 							:key="mode"

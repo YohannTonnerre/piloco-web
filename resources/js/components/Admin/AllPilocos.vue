@@ -53,7 +53,7 @@ export default {
 			modes: [],
 			filterText: '',
 			selectedMode: null,
-			selectedSip: null
+			selectedSip: ''
 		}
 	},
 	methods: {
@@ -87,10 +87,10 @@ export default {
 		filteredList() {
 			let pilocos = this.pilocos
 			if (this.selectedMode !== null) {
-				pilocos = this.pilocos.filter(e => e.mode == this.selectedMode)
+				pilocos = pilocos.filter(e => e.mode == this.selectedMode)
 			}
-			if (this.selectedSip !== null) {
-				pilocos = this.pilocos.filter(e => e.sip == this.selectedSip)
+			if (this.selectedSip !== '') {
+				pilocos = pilocos.filter(e => e.sip == this.selectedSip)
 			}
 			return pilocos.filter(piloco => {
 				return piloco.text.toLowerCase().includes(this.filterText.toLowerCase())

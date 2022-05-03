@@ -25,7 +25,7 @@
 				</p>
 
 				<button v-if="id" class="logout-btn" @click.prevent="logout">
-					Logout
+					Se déconnecter
 				</button>
 			</div>
 			<div class="game-create-start">
@@ -111,6 +111,7 @@ export default {
 		logout() {
 			axios.post('/api/logout').then(() => {
 				this.id = null
+				localStorage.token = ''
 			})
 		},
 		getId: function () {
